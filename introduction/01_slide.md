@@ -61,11 +61,11 @@
 # Nginx Config #
     @@@ Javascript
     server {
-      listen 80;
-      server_name localhost;
+     listen 80;
+     server_name localhost;
     
-      location / {
-        root .../bcmvc/lib/bcmvc_web/priv/;
+     location / {
+      root .../bcmvc/lib/bcmvc_web/priv/;
     
       if ($request_method ~* POST) {
         proxy_pass http://localhost:8080;
@@ -74,4 +74,5 @@
       if ($http_accept ~* application/json) {
         proxy_pass http://localhost:8080;
       }
+     }
     }

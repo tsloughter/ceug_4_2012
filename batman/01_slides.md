@@ -9,7 +9,7 @@
 * Backend developer safety!
 * Nothing new to learn for frontend devs
 * No waiting on updates to template engine
-* Node.js...
+* Node.js of fixture prototypes by frontend dev
 
 !SLIDE center
 # Batman.js Example #
