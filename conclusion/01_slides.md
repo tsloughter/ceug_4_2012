@@ -1,6 +1,8 @@
 !SLIDE bullets
 # References #
 
+* This Code (https://github.com/tsloughter/bcmvc)
+* These Slides (https://github.com/tsloughter/ceug_4_2012)
 * Batman.js (http://batmanjs.org/)
 * Cowboy (https://github.com/extend/cowboy)
 * Webmachine (https://github.com/basho/webmachine)
