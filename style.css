@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Yanone Kaffeesatz';
+  src: url('./YanoneKaffeesatz-Bold.ttf');
+}
+
+.slide {
+  background: #353535; // #6ba9c2;
+}
+
+.content {
+  margin-top: 2px !important;
+  color: white;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: strong;
+}
+
+pre.sh_sourceCode {
+  color: white;
+  border-radius: 10px;
+  background: black;
+  -moz-box-shadow:    3px 3px 5px 6px #bbb;
+  -webkit-box-shadow: 3px 3px 5px 6px #bbb;
+  box-shadow:         3px 3px 5px 6px #bbb;
+}
+
+// pink #ea5f86
+// green #92b358
+// grey #353535
+
