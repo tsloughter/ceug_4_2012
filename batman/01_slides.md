@@ -25,16 +25,18 @@
 
     @@@ html
     <li data-foreach-todo="Todo.all"
-    	data-event-doubleclick="controllers.todos.edit"
-	    data-addclass-completed="todo.isDone">
-    	<div class="view">
-	      <input class="toggle" type="checkbox" data-bind="todo.isDone" />
-          <label data-bind="todo.body"></label>
-	      <button class="destroy" data-event-click="todo.destroy"></button>
-	    </div>
-        <input data-bind-id="todo.id" class="edit"
-            data-bind-value="todo.body" 
-            data-event-submit="controllers.todos.update">
+      data-event-doubleclick="controllers.todos.edit"
+	  data-addclass-completed="todo.isDone">
+      <div class="view">
+        <input class="toggle" 
+          type="checkbox" data-bind="todo.isDone" />
+        <label data-bind="todo.body" />
+	    <button class="destroy" 
+          data-event-click="todo.destroy"></button>
+	  </div>
+      <input data-bind-id="todo.id" class="edit"
+        data-bind-value="todo.body" 
+        data-event-submit="controllers.todos.update">
 	</li>
 
 !SLIDE code
@@ -42,9 +44,9 @@
 
     @@@ coffeescript
     class TodoMVC.Todo extends Batman.Model
-      @global yes # global exposes this class on the global object, so you can access `Todo` directly.
+      @global yes
 
-      @persist Batman.RestStorage # Batman.LocalStorage
+      @persist Batman.RestStorage
       @encode 'body', 'isDone'
 
       body: ''

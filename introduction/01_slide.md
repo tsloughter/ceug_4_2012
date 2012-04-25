@@ -37,7 +37,7 @@
 # Erlang for Web Development? #
 
 !SLIDE center
-# I know, I'll convert Erlang terms to HTML and functions to generate Javascript! #
+# I know, I'll convert Erlang terms to HTML and have functions to generate Javascript! #
 
 !SLIDE center
 # Now you have 2 problems! #
