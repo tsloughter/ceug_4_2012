@@ -217,25 +217,27 @@
 <h1>View</h1>
 
 <pre class="sh_html"><code>&lt;li data-foreach-todo="Todo.all"
-    data-event-doubleclick="controllers.todos.edit"
-    data-addclass-completed="todo.isDone"&gt;
-    &lt;div class="view"&gt;
-      &lt;input class="toggle" type="checkbox" data-bind="todo.isDone" /&gt;
-      &lt;label data-bind="todo.body"&gt;&lt;/label&gt;
-      &lt;button class="destroy" data-event-click="todo.destroy"&gt;&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;input data-bind-id="todo.id" class="edit"
-        data-bind-value="todo.body" 
-        data-event-submit="controllers.todos.update"&gt;
+  data-event-doubleclick="controllers.todos.edit"
+  data-addclass-completed="todo.isDone"&gt;
+  &lt;div class="view"&gt;
+    &lt;input class="toggle" 
+      type="checkbox" data-bind="todo.isDone" /&gt;
+    &lt;label data-bind="todo.body" /&gt;
+    &lt;button class="destroy" 
+      data-event-click="todo.destroy"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;input data-bind-id="todo.id" class="edit"
+    data-bind-value="todo.body" 
+    data-event-submit="controllers.todos.update"&gt;
 &lt;/li&gt;</code></pre>
 </div>
 </div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/6">
 <h1>Model</h1>
 
 <pre class="sh_coffeescript"><code>class TodoMVC.Todo extends Batman.Model
-  @global yes # global exposes this class on the global object, so you can access `Todo` directly.
+  @global yes
 
-  @persist Batman.RestStorage # Batman.LocalStorage
+  @persist Batman.RestStorage
   @encode 'body', 'isDone'
 
   body: ''
