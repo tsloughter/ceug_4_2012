@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Erlang and Batman.js</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  
+    
+      <script type="text/javascript" src="./js/sh_lang/sh_javascript.min.js"></script>
+    
+  
+
+  
+    <link rel="stylesheet" href="./file/style.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+    <tr><td class="key">P</td><td>toggle pause</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="introduction/01_slide/1">
+<h1>Erlang and Batman.js</h1>
+
+<h2>Tristan Sloughter (tristan@mashape.com @t_sloughter)</h2>
+
+<p><img src="./file/introduction/mashape-logo.png" width="175" height="40" alt="Mashape"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="introduction/01_slide/2">
+<h1>Contents</h1>
+
+<ul>
+<li>Types of Web Frameworks</li>
+<li>Javscript Frameworks</li>
+<li>Erlang for RESTful API</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/3">
+<h1>Cowboy-Batman!</h1>
+
+<p><img src="./file/introduction/cowboy-batman.jpg" width="500" height="428" alt="Cowboy-Batman"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="introduction/01_slide/4">
+<h1>Why My Way?</h1>
+
+<ul>
+<li>Right tool for the job</li>
+<li>API from the beginning </li>
+<li>Total separation</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="introduction/01_slide/5">
+<h1>Frameworks</h1>
+
+<ul>
+<li>MVC (Rails, Django, Play!...)</li>
+<li>Totalitarian? (Opa, Meteor...)</li>
+<li>Other (Yesod, Nitrogen...)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/6">
+<h1>Confusion</h1>
+
+<p><img src="./file/introduction/confused.jpg" width="378" height="480" alt="Confsion"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/7">
+<h1>Erlang for Web Development?</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/8">
+<h1>I know, I'll convert Erlang terms to HTML and functions to generate Javascript!</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/9">
+<h1>Now you have 2 problems!</h1>
+
+<p><img src="./file/introduction/facepalm.jpg" width="492" height="421" alt="Facepalm"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/10">
+<h1>Throw it all away</h1>
+
+<p><img src="./file/introduction/trash.jpg" width="510" height="436" alt="Trash"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/11">
+<h1>Simplify!</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/12">
+<h1>Browser &lt;- JSON -&gt; Backend</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/13">
+<p><img src="./file/introduction/maru_v1.png" width="1085" height="810" alt="Maru"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content execute" ref="introduction/01_slide/14">
+<h1>Nginx Config</h1>
+
+<pre class="sh_javascript"><code>server {
+  listen 80;
+  server_name localhost;
+
+  location / {
+    root .../bcmvc/lib/bcmvc_web/priv/;
+
+  if ($request_method ~* POST) {
+    proxy_pass http://localhost:8080;
+  }
+
+  if ($http_accept ~* application/json) {
+    proxy_pass http://localhost:8080;
+  }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/15">
+<h1>JS MVC Advantages</h1>
+
+<p><img src="./file/introduction/someone_else.png" width="512" height="384" alt="Trash"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="introduction/01_slide/16">
+<h1>JS MVC Advantages</h1>
+
+<ul>
+<li>Backend developer safety!</li>
+<li>Nothing new to learn for frontend devs</li>
+<li>No waiting on updates to template engine</li>
+<li>Node.js...</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/17">
+<h1>Batman.js Example</h1>
+
+<p><img src="./file/introduction/batmanjs.png" width="232" height="60" alt="Batman.js"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/18">
+<h1>TodoMVC</h1>
+
+<p><img src="./file/introduction/todomvc.png" width="620" height="365" alt="TodoMVC"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="introduction/01_slide/19">
+<h1>View</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="introduction/01_slide/20">
+<h1>Model</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="introduction/01_slide/21">
+<h1>Controller</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="introduction/01_slide/22">
+<h1>Erlang Apps</h1>
+
+<ul>
+<li>Webmachine or Cowboy for REST</li>
+<li>JSX or Jiffy for JSON</li>
+<li>Maru for extras</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/23">
+<h1>Cowboy Example</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="introduction/01_slide/24">
+<h1>Dispatch</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="introduction/01_slide/25">
+<h1>Authorize</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="introduction/01_slide/26">
+<h1>CRUD</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="introduction/01_slide/27">
+<h1>References</h1>
+
+<ul>
+<li>Batman.js (http://batmanjs.org/)</li>
+<li>Cowboy (https://github.com/extend/cowboy)</li>
+<li>Webmachine (https://github.com/basho/webmachine)</li>
+<li>JSX (https://github.com/talentdeficit/jsx)</li>
+<li>Jiffy (https://github.com/davisp/jiffy)</li>
+<li>Maru (https://github.com/tsloughter/maru)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="introduction/01_slide/28">
+<p><img src="./file/introduction/fab.jpg" width="440" height="717" alt="Fab"/>
+</p>
+</div>
+</div></div>
+<div id="pauseScreen">
+  
+</div>
+
+</body>
+</html>
