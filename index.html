@@ -34,6 +34,10 @@
     
       <script type="text/javascript" src="./js/sh_lang/sh_javascript.min.js"></script>
     
+      <script type="text/javascript" src="./js/sh_lang/sh_html.min.js"></script>
+    
+      <script type="text/javascript" src="./js/sh_lang/sh_coffeescript.min.js"></script>
+    
       <script type="text/javascript" src="./js/sh_lang/sh_erlang.min.js"></script>
     
   
@@ -211,12 +215,44 @@
 </div>
 </div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/5">
 <h1>View</h1>
+
+<pre class="sh_html"><code>&lt;li data-foreach-todo="Todo.all"
+    data-event-doubleclick="controllers.todos.edit"
+    data-addclass-completed="todo.isDone"&gt;
+    &lt;div class="view"&gt;
+      &lt;input class="toggle" type="checkbox" data-bind="todo.isDone" /&gt;
+      &lt;label data-bind="todo.body"&gt;&lt;/label&gt;
+      &lt;button class="destroy" data-event-click="todo.destroy"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;input data-bind-id="todo.id" class="edit"
+        data-bind-value="todo.body" 
+        data-event-submit="controllers.todos.update"&gt;
+&lt;/li&gt;</code></pre>
 </div>
 </div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/6">
 <h1>Model</h1>
+
+<pre class="sh_coffeescript"><code>class TodoMVC.Todo extends Batman.Model
+  @global yes # global exposes this class on the global object, so you can access `Todo` directly.
+
+  @persist Batman.RestStorage # Batman.LocalStorage
+  @encode 'body', 'isDone'
+
+  body: ''
+  isDone: false</code></pre>
 </div>
 </div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/7">
 <h1>Controller</h1>
+
+<pre class="sh_coffeescript"><code>class TodoMVC.TodosController extends Batman.Controller
+    @todo: null
+
+    index: -&gt;
+        @render false
+
+    create: =&gt;
+      @todo.save =&gt;
+        @set 'emptyTodo', new Todo</code></pre>
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="cowboy/01_slides/1">
 <h1>Erlang Apps</h1>
