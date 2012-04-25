@@ -7,6 +7,10 @@
   background: #353535; // #6ba9c2;
 }
 
+h1, h2, h3 {
+  margin: 0;
+}
+
 .content {
   margin-top: 2px !important;
   color: white;
@@ -15,9 +19,9 @@
 }
 
 pre.sh_sourceCode {
-  color: white;
+  color: black;
   border-radius: 10px;
-  background: black;
+  background: #D8D8D8; //#0F1656;
   -moz-box-shadow:    3px 3px 5px 6px #bbb;
   -webkit-box-shadow: 3px 3px 5px 6px #bbb;
   box-shadow:         3px 3px 5px 6px #bbb;
