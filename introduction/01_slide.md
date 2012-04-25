@@ -25,12 +25,12 @@
 !SLIDE bullets 
 # Frameworks #
 
-* MVC (Rails, Django, Play!...)
-* Totalitarian? (Opa, Meteor...)
-* Other (Yesod, Nitrogen...)
+* Rails, Django, Play!, Chicago Boss...
+* Lift, Yesod, Nitrogen...
+* Opa, Meteor...
 
 !SLIDE center
-# Confusion #
+# Me Using Rails #
 ![Confsion](confused.jpg)
 
 !SLIDE center
@@ -75,67 +75,3 @@
         proxy_pass http://localhost:8080;
       }
     }
-
-    
-!SLIDE center
-# JS MVC Advantages #
-
-![Trash](someone_else.png)
-
-!SLIDE bullets
-# JS MVC Advantages #
-
-* Backend developer safety!
-* Nothing new to learn for frontend devs
-* No waiting on updates to template engine
-* Node.js...
-
-!SLIDE center
-# Batman.js Example #
-
-![Batman.js](batmanjs.png)
-
-!SLIDE center
-# TodoMVC #
-![TodoMVC](todomvc.png)
-
-!SLIDE code
-# View #
-
-!SLIDE code
-# Model #
-
-!SLIDE code
-# Controller #
-
-!SLIDE bullets
-# Erlang Apps #
-
-* Webmachine or Cowboy for REST
-* JSX or Jiffy for JSON
-* Maru for extras
-
-!SLIDE center
-# Cowboy Example #
-
-!SLIDE code
-# Dispatch #
-
-!SLIDE code
-# Authorize #
-
-!SLIDE code
-# CRUD #
-
-!SLIDE bullets
-# References #
-
-* Batman.js (http://batmanjs.org/)
-* Cowboy (https://github.com/extend/cowboy)
-* Webmachine (https://github.com/basho/webmachine)
-* JSX (https://github.com/talentdeficit/jsx)
-* Jiffy (https://github.com/davisp/jiffy)
-* Maru (https://github.com/tsloughter/maru)
-
-!SLIDE center
-![Fab](fab.jpg)

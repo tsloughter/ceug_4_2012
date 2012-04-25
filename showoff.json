@@ -1,1 +1,4 @@
-{ "name": "Erlang and Batman.js", "sections": [ {"section":"introduction"} ]}
+{ "name": "Erlang and Batman.js", "sections": [ {"section":"introduction"},
+                                                {"section":"batman"},
+                                                {"section":"cowboy"},
+                                                {"section":"conclusion"} ]}
