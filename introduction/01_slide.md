@@ -1,4 +1,4 @@
-!SLIDE 
+!SLIDE center
 # Erlang and Batman.js #
 ## Tristan Sloughter (tristan@mashape.com @t_sloughter)
 
