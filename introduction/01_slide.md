@@ -1,6 +1,8 @@
 !SLIDE center
-# Erlang and Batman.js #
-## Tristan Sloughter (tristan@mashape.com @t_sloughter)
+# Cowboy-Batman! #
+## Erlang and Batman.js for Web Development  
+
+### Tristan Sloughter (tristan@mashape.com @t_sloughter)
 
 ![Mashape](mashape-logo.png)
 
