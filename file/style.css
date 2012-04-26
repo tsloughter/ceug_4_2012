@@ -3,6 +3,10 @@
   src: url('./fonts/YanoneKaffeesatz-Bold.ttf');
 }
 
+a {
+  color: white;
+}
+
 .slide {
   background: #353535; // #6ba9c2;
 }
