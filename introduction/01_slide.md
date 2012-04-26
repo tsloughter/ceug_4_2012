@@ -10,8 +10,8 @@
 !SLIDE bullets
 # Follow Along #
 
-* This Code [https://github.com/tsloughter/bcmvc](https://github.com/tsloughter/bcmvc)
-* These Slides [https://github.com/tsloughter/ceug_4_2012](https://github.com/tsloughter/ceug_4_2012)
+* This Code : [https://github.com/tsloughter/bcmvc](https://github.com/tsloughter/bcmvc)
+* These Slides : [https://github.com/tsloughter/ceug_4_2012](https://github.com/tsloughter/ceug_4_2012)
 
 !SLIDE bullets 
 # Contents #
