@@ -34,6 +34,8 @@
     
       <script type="text/javascript" src="./js/sh_lang/sh_javascript.min.js"></script>
     
+      <script type="text/javascript" src="./js/sh_lang/sh_ruby.min.js"></script>
+    
       <script type="text/javascript" src="./js/sh_lang/sh_html.min.js"></script>
     
       <script type="text/javascript" src="./js/sh_lang/sh_coffeescript.min.js"></script>
@@ -218,6 +220,17 @@
 </p>
 </div>
 </div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/5">
+<h1>Batman.js Structure</h1>
+
+<pre class="sh_ruby"><code>&#x251C;&#x2500;&#x2500; coffee
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; app.coffee
+&#x251C;&#x2500;&#x2500; controllers
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; todos_controller.coffee
+&#x251C;&#x2500;&#x2500; index.html
+&#x251C;&#x2500;&#x2500; models
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; todo.coffee</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/6">
 <h1>View</h1>
 
 <pre class="sh_html"><code>&lt;li data-foreach-todo="Todo.all"
@@ -235,30 +248,54 @@
     data-event-submit="controllers.todos.update"&gt;
 &lt;/li&gt;</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/6">
+</div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/7">
 <h1>Model</h1>
 
 <pre class="sh_coffeescript"><code>class TodoMVC.Todo extends Batman.Model
-  @global yes
-
   @persist Batman.RestStorage
   @encode 'body', 'isDone'
 
   body: ''
   isDone: false</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/7">
+</div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/8">
 <h1>Controller</h1>
 
 <pre class="sh_coffeescript"><code>class TodoMVC.TodosController extends Batman.Controller
-    @todo: null
-
     index: -&gt;
+        @set 'emptyTodo', new Todo
         @render false
 
     create: =&gt;
       @todo.save =&gt;
-        @set 'emptyTodo', new Todo</code></pre>
+        @set 'emptyTodo', new Todo
+
+    edit: (node, event) -&gt;
+      $(node).addClass('editing')
+
+    update: (node, event) -&gt;
+      newTodo = new Todo({id: $(node).attr('id'), body: $(node).val()})
+      newTodo.save()
+      $(node).parent().removeClass('editing')</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="batman/01_slides/9">
+<h1>API</h1>
+
+<pre class="sh_javascript"><code>POST:
+todo['body']="bane wants to meet, not worried"
+todo['isDone']=false
+
+PUT:
+/33e93b30-2371-4071-afc5-2d48226d5dba
+{"body":"bane wants to meet, not worried","isDone":false}
+
+GET:
+[{id:"33e93b30-2371-4071-afc5-2d48226d5dba",
+  "body":"bane wants to meet, not worried","
+  isDone":false}]
+
+DELETE:
+/33e93b30-2371-4071-afc5-2d48226d5dba</code></pre>
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="cowboy/01_slides/1">
 <h1>Erlang Apps</h1>
@@ -273,72 +310,111 @@
 <h1>Cowboy Example</h1>
 </div>
 </div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/3">
+<p><style>
+.sh_ruby { line-height: .7; }
+code {font-size: 20px; }
+</style></p>
+
+<h1>Structure</h1>
+
+<pre class="sh_ruby"><code>&#x251C;&#x2500;&#x2500; lib
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; bcmvc_db
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; src
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_db_app.erl
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_db.app.src
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_db.erl
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_db_mnesia.erl
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_db_sup.erl
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x2514;&#x2500;&#x2500; bcmvc_idioms.hrl
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; bcmvc_models
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; src
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_models.app.src
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_model_todo.erl
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_model_transform.erl
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; bcmvc_model_types.erl
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0;     &#x2514;&#x2500;&#x2500; bcmvc_model_utils.erl
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; bcmvc_web
+&#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; priv
+&#x2502;&#xA0;&#xA0;     &#x2514;&#x2500;&#x2500; src
+&#x2502;&#xA0;&#xA0;         &#x251C;&#x2500;&#x2500; bcmvc_todo_handler.erl
+&#x2502;&#xA0;&#xA0;         &#x251C;&#x2500;&#x2500; bcmvc_web_app.erl
+&#x2502;&#xA0;&#xA0;         &#x251C;&#x2500;&#x2500; bcmvc_web.app.src
+&#x2502;&#xA0;&#xA0;         &#x251C;&#x2500;&#x2500; bcmvc_web_sup.erl
+&#x2502;&#xA0;&#xA0;         &#x2514;&#x2500;&#x2500; bcmvc_web_utils.erl</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/4">
+<h1>Todo Model</h1>
+
+<pre class="sh_erlang"><code>-compile({parse_transform, bcmvc_model_transform}).
+
+-record(bcmvc_model_todo, {id = ossp_uuid:make(v1, text) :: string(),
+                           body                          :: binary(),
+                           isDone                        :: boolean()}).
+
+find(Criteria) when is_list(Criteria) -&gt;
+  bcmvc_db:find(?MODULE, Criteria);
+find(Criteria) when is_tuple(Criteria)-&gt;
+  bcmvc_db:find(?MODULE, [Criteria]).
+
+to_json(Record) -&gt;
+  ?record_to_json(?MODULE, Record).
+
+to_record(JSON) -&gt;
+  ?json_to_record(?MODULE, JSON).</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/5">
 <h1>Dispatch</h1>
 
 <pre class="sh_erlang"><code>{[&lt;&lt;"todos"&gt;&gt;], bcmvc_todo_handler, []}
-{[&lt;&lt;"todos"&gt;&gt;, todo], 
-    bcmvc_todo_handler, []}</code></pre>
+{[&lt;&lt;"todos"&gt;&gt;, todo], bcmvc_todo_handler, []}</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/4">
+</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/6">
 <h1>Authorize</h1>
 
 <pre class="sh_erlang"><code>init(_Transport, _Req, _Opts) -&gt;
   {upgrade, protocol, cowboy_http_rest}.
 
 allowed_methods(Req, State) -&gt;
-  {['HEAD', 'GET', 'PUT', 'POST', 
-      'DELETE'], Req, State}.
+  {['HEAD', 'GET', 'PUT', 'POST', 'DELETE'], Req, State}.
 
 content_types_accepted(Req, State) -&gt;
-  {[{{&lt;&lt;"application"&gt;&gt;, &lt;&lt;"json"&gt;&gt;, []}, 
-      put_json}], Req, State}.
+  {[{{&lt;&lt;"application"&gt;&gt;, &lt;&lt;"json"&gt;&gt;, []}, put_json}], Req, State}.
 
 content_types_provided(Req, State) -&gt;
-  {[{{&lt;&lt;"application"&gt;&gt;, &lt;&lt;"json"&gt;&gt;, []}, 
-      get_json}], Req, State}.</code></pre>
+  {[{{&lt;&lt;"application"&gt;&gt;, &lt;&lt;"json"&gt;&gt;, []}, get_json}], Req, State}.</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/5">
+</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/7">
 <h1>POST</h1>
 
 <pre class="sh_erlang"><code>process_post(Req, State) -&gt;
-  {ok, Body, Req1} = 
-      cowboy_http_req:body(Req),
-  Todo = 
-      bcmvc_web_utils:qs_to_proplist(Body),   
-  TodoModel = bcmvc_model_todo:new(Todo),
-  bcmvc_model_todo:save(TodoModel),
+  {ok, Body, Req1} = cowboy_http_req:body(Req),
+  Todo = bcmvc_model_todo:to_record(Body),
+  bcmvc_model_todo:save(Todo),
   {true, Req1, State}.</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/6">
+</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/8">
 <h1>PUT</h1>
 
 <pre class="sh_erlang"><code>put_json(Req, State) -&gt;
-  {ok, Body, Req1} = 
-      cowboy_http_req:body(Req),
-  {TodoId, Req2} = 
-      cowboy_http_req:binding(todo, Req1),
-  Todo = bcmvc_model_todo:set(
-      bcmvc_model_todo:to_record(Body), 
-          id, TodoId),
+  {ok, Body, Req1} = cowboy_http_req:body(Req),
+  {TodoId, Req2} = cowboy_http_req:binding(todo, Req1),
+  Todo = bcmvc_model_todo:set(bcmvc_model_todo:to_record(Body), id, TodoId),
   bcmvc_model_todo:update(Todo),    
   {true, Req2, State}.</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/7">
+</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/9">
 <h1>GET</h1>
 
 <pre class="sh_erlang"><code>get_json(Req, State) -&gt;
- All = [bcmvc_model_todo:to_json(Model) 
-       || Model &lt;- bcmvc_model_todo:all()]
+ All = [bcmvc_model_todo:to_json(Model) || Model &lt;- bcmvc_model_todo:all()]
  JsonModels = list_to_json(All),
- {&lt;&lt;"[", JsonModels/binary, "]"&gt;&gt;, 
-      Req, State}.</code></pre>
+ {&lt;&lt;"[", JsonModels/binary, "]"&gt;&gt;, Req, State}.</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/8">
+</div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/10">
 <h1>DELETE</h1>
 
 <pre class="sh_erlang"><code>delete_resource(Req, State) -&gt;
-  {TodoId, Req1} = 
-      cowboy_http_req:binding(todo, Req),
+  {TodoId, Req1} =  cowboy_http_req:binding(todo, Req),
   bcmvc_model_todo:delete(TodoId),
   {true, Req1, State}.</code></pre>
 </div>
