@@ -21,6 +21,18 @@
 ![TodoMVC](todomvc.png)
 
 !SLIDE code
+# Batman.js Structure #
+
+    @@@ Ruby
+    ├── coffee
+    │   └── app.coffee
+    ├── controllers
+    │   └── todos_controller.coffee
+    ├── index.html
+    ├── models
+    │   └── todo.coffee
+    
+!SLIDE code
 # View #
 
     @@@ html
@@ -38,14 +50,13 @@
         data-bind-value="todo.body" 
         data-event-submit="controllers.todos.update">
 	</li>
+    
 
 !SLIDE code
 # Model #
 
     @@@ coffeescript
     class TodoMVC.Todo extends Batman.Model
-      @global yes
-
       @persist Batman.RestStorage
       @encode 'body', 'isDone'
 
@@ -58,11 +69,38 @@
 
     @@@ coffeescript
     class TodoMVC.TodosController extends Batman.Controller
-        @todo: null
-        
         index: ->
+            @set 'emptyTodo', new Todo
             @render false
 
         create: =>
           @todo.save =>
             @set 'emptyTodo', new Todo
+
+        edit: (node, event) ->
+          $(node).addClass('editing')
+
+        update: (node, event) ->
+          newTodo = new Todo({id: $(node).attr('id'), body: $(node).val()})
+          newTodo.save()
+          $(node).parent().removeClass('editing')
+
+!SLIDE code
+# API #
+
+    @@@ javascript
+    POST:
+    todo['body']="bane wants to meet, not worried"
+    todo['isDone']=false
+    
+    PUT:
+    /33e93b30-2371-4071-afc5-2d48226d5dba
+    {"body":"bane wants to meet, not worried","isDone":false}
+    
+    GET:
+    [{id:"33e93b30-2371-4071-afc5-2d48226d5dba",
+      "body":"bane wants to meet, not worried","
+      isDone":false}]
+    
+    DELETE:
+    /33e93b30-2371-4071-afc5-2d48226d5dba
