@@ -57,7 +57,7 @@
 
     @@@ coffeescript
     class TodoMVC.Todo extends Batman.Model
-      @persist Batman.RestStorage
+      @persist TodoMVC.JSONRestStorage
       @encode 'body', 'isDone'
 
       body: ''
@@ -90,17 +90,18 @@
 
     @@@ javascript
     POST:
-    todo['body']="bane wants to meet, not worried"
-    todo['isDone']=false
+    /todos/
+    {body:"bane wants to meet, not worried",isDone:false}
     
     PUT:
-    /33e93b30-2371-4071-afc5-2d48226d5dba
-    {"body":"bane wants to meet, not worried","isDone":false}
+    /todos/33e93b30-2371-4071-afc5-2d48226d5dba
+    {body:"bane wants to meet, not worried",isDone:false}
     
     GET:
+    /todos/
     [{id:"33e93b30-2371-4071-afc5-2d48226d5dba",
-      "body":"bane wants to meet, not worried","
-      isDone":false}]
+      body:"bane wants to meet, not worried",
+      isDone:false}]
     
     DELETE:
-    /33e93b30-2371-4071-afc5-2d48226d5dba
+    /todos/33e93b30-2371-4071-afc5-2d48226d5dba
