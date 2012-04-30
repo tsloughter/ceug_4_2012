@@ -95,6 +95,11 @@ code {font-size: 20px; }
       {ok, Body, Req1} = cowboy_http_req:body(Req),
       Todo = bcmvc_model_todo:to_record(Body),
       bcmvc_model_todo:save(Todo),
+      
+      NewId = bcmvc_model_todo:get(id, Todo),
+     {ok, Req2} = cowboy_http_req:set_resp_header(
+                   <<"Location">>, <<"/todos/", NewId/binary>>, Req1),
+
       {true, Req1, State}.
 
 !SLIDE code
