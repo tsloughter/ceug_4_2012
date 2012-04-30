@@ -399,6 +399,11 @@ content_types_provided(Req, State) -&gt;
   {ok, Body, Req1} = cowboy_http_req:body(Req),
   Todo = bcmvc_model_todo:to_record(Body),
   bcmvc_model_todo:save(Todo),
+
+  NewId = bcmvc_model_todo:get(id, Todo),
+ {ok, Req2} = cowboy_http_req:set_resp_header(
+               &lt;&lt;"Location"&gt;&gt;, &lt;&lt;"/todos/", NewId/binary&gt;&gt;, Req1),
+
   {true, Req1, State}.</code></pre>
 </div>
 </div><div class="slide" data-transition="none"><div class="content code" ref="cowboy/01_slides/8">
